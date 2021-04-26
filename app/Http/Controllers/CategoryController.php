@@ -45,11 +45,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->categoryService->store($request);
-         if ($request->paren_id === 0) {
+        /* if ($request->paren_id === 0) {
              return $this->index();
         } else {
             return $this->edit($this->categoryService->findCategory($request->parent_id));
-        }
+        }*/
+        return $this->index();
     }
 
     /**
@@ -85,7 +86,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->categoryService->update($request, $id);
-        return $this->index();
+        return $this->edit($this->categoryService->findCategory($id));
     }
 
     /**

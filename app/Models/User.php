@@ -45,9 +45,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function works()
+    public function works ()
     {
         return $this->belongsToMany('App\Models\Work','service_work');
     }
+
+    public function ads ()
+    {
+        return $this->belongsToMany('App\Models\Work','ad_user', 'user_id', 'ad_id')
+            ->withPivot(['category']);
+    }
+
 
 }

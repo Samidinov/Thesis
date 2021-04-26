@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Service\SavedListService;
 use Illuminate\Http\Request;
 
 class SavedList extends Controller
 {
+    protected $savedListService;
+    public function __construct(SavedListService $savedListService)
+    {
+        $this->savedListService = $savedListService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,11 +48,12 @@ class SavedList extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id)
     {
-        dd($id);
+        $saved_ads = $this->savedListService->getAllSavedListByUserId($user_id);
+        return view('saved-ads-list.show', ['saved_ads' => $saved_ads]);
     }
 
     /**

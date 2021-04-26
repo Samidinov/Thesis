@@ -23,7 +23,7 @@
         <label for="description">{{ $description }}</label>
         <textarea class="form-control" rows="5" id="description" name="description"
                   placeholder="{{ $description_input_placeholder }}"
-                  required>{{ isset($work->description) ? $work->description: old('description') }}</textarea>
+                  required >{{ isset($work->description) ? $work->description: old('description') }}</textarea>
     </div>
     <div class="form-group form-inline">
         <div class="col-lg-6 col-sm-12 row">
@@ -42,7 +42,7 @@
     <div class="form-group">
         <label for="time_to_work">{{ $time_to_work }}</label>
         <input type="text" class="form-control" id="time_to_work" name="time_to_work"
-               placeholder="{{ $time_to_work_input_placeholder }}"
+               placeholder="{{ $time_to_work_input_placeholder }}" required
                value="{{isset($work->time_to_work) ? $work->time_to_work: old('time_to_work')}}">
     </div>
     <div class="form-group">

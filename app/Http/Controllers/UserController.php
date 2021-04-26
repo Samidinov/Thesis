@@ -98,4 +98,22 @@ class UserController extends Controller
         $this->UserService->destroy($id);
         return redirect(route('work.index'));
     }
+
+    public function userAds (Request $request) {
+        $input = $request->all();
+        if ($input['action'] ==='add') {
+            return $this->UserService->addToUsersSavedWorkAdList ($input['user_id'], $input['ad_id'], 'WORK');
+        }
+        elseif ($input['action'] === 'remove') {
+            return $this->UserService->removeFromUsersSavedWorkAdList ($input['user_id'], $input['ad_id'], 'WORK');
+        }
+    }
+
+    public function isMyAd(Request $request) {
+        $input = $request->all();
+        $result = $this->UserService->checkMapping($input['user_id'], $input['ad_id'], 'WORK');
+        return ['result'=>$result];
+    }
+
+
 }

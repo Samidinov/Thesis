@@ -13955,4 +13955,6 @@ a.text-dark:focus {
   widows: 100%;
   height: auto;
 }
-
+.cursor-pointer {
+    cursor: pointer;
+}

@@ -14,9 +14,10 @@ class CreateAdUserTable extends Migration
     public function up()
     {
         Schema::create('ad_user', function (Blueprint $table) {
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('ad_id')->references('id')->on('works')->onDelete('cascade');
-            $table->primary(array('user_id','ad_id'));
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('category');
+            $table->primary(array('user_id', 'ad_id'));
         });
     }
 

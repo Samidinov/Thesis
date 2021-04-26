@@ -23,8 +23,13 @@ class MasterService
     public function store(Request $request)
     {
         $master = new Master();
-        $this->change( $request, $master );
-        return $master->categories()->attach($request->input('subcategory_id'));
+        $master->setBirthYear($request->input('birth_year'));
+        $master->setExperience($request->input('experience'));
+        $master->setPhoto($request->input('photo'));
+        $master->setId($request->input('user_id'));
+        $master->save();
+        return $master;
+//        return $master->categories()->attach( $request->input('subcategory_id'));
 
     }
 

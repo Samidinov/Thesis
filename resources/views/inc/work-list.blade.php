@@ -1,7 +1,9 @@
 
 
     <div class="col-8">
-        <a class="col-12 d-block text-primary font-weight-bold" href="{{ $route }}" > {{substr($work_title,0,50).'...' }}</a>
+        <a class="col-12 d-block text-primary font-weight-bold" href="{{ $route }}" >
+            {{strlen($work->title)<50?$work->title:mb_substr($work->title,0,50).'..'}}
+        </a>
         <small class="col-12 text-secondary"> {{ substr($work_description,0,100).'...' }} </small>
     </div>
     <div class="col-4">

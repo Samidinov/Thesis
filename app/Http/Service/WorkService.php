@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 
 class WorkService
 {
+    protected function htmlFilter(string $html)
+    {
+        return strip_tags($html, '<b><h1><small><p><em><span><strong><code><h2><h3><h4><h5><h6><del><i><s><hr><table><tr><td>');
+    }
+
     public function getAll()
     {
         return Work::orderByDesc("created_at")->get();
@@ -20,6 +25,7 @@ class WorkService
     {
         return Work::where('user_id', '=', $user_id)->orderByDesc('created_at')->get();
     }
+
     public function getWorksByCategories(Work $work)
     {
         $workCategories = $work->categories()->with('works', function($q) use($work){
@@ -33,6 +39,7 @@ class WorkService
        return $works;
 
     }
+
     public function getAllCategories()
     {
         return Category::all();
@@ -97,8 +104,5 @@ class WorkService
             'price'=>'Баа'
         ]);
     }
-    protected function htmlFilter(string $html)
-    {
-        return strip_tags($html, '<b><h1><small><p><em><span><strong><code><h2><h3><h4><h5><h6><del><i><s><hr><table><tr><td>');
-    }
+
 }

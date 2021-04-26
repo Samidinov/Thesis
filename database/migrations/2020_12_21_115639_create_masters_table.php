@@ -14,14 +14,14 @@ class CreateMastersTable extends Migration
     public function up()
     {
         Schema::create('masters', function (Blueprint $table) {
-            $table->foreignId('id');
+            $table->foreignId('id')->autoIncrement();
             $table->string('photo');
             $table->string('birth_year');
             $table->text('experience')->nullable();
             $table->timestamps();
 
             //foreign keys
-            $table->foreign('id')->references('id')->on('users');
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

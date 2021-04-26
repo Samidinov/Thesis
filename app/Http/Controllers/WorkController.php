@@ -120,4 +120,5 @@ class WorkController extends Controller
     {
         return view('work.show-users-works', ['works' => $this->workService->getWorksByUserId($user_id)]);
     }
+
 }

@@ -19,6 +19,7 @@ class UserService
     {
         return $this->getUser($id);
     }
+
     public function update(Request $request ,$id)
     {
         $this->validateUser($request);
@@ -31,6 +32,29 @@ class UserService
     {
         return $this->getUser($id)->delete();
     }
+
+    public function addToUsersSavedWorkAdList ($user_id, $ad_id, $type) {
+        $user = $this->getUser($user_id);
+        return $user->ads()->attach($ad_id, ['category' => $type]);
+    }
+
+    public function checkMapping ($user_id, $ad_id, $type) {
+        $user = $this->getUser($user_id);
+        $ad = $user->ads()->where([
+            ['ad_id', '=', $ad_id],
+            ['category', '=', $type]
+            ])->get();
+        if(sizeof($ad)){
+            return true;
+        }
+        return false;
+    }
+    public function removeFromUsersSavedWorkAdList ($user_id, $ad_id, $type) {
+            $user = $this->getUser($user_id);
+    //        dd($ad_id);
+            $user->ads()->detach($ad_id, ['category' => $type]);
+        }
+
     protected function save(Request $request,User $user){
         $user->name = $this->htmlFilter($request->input('name'));
         $user->surname = $this->htmlFilter($request->input('surname'));
@@ -38,6 +62,7 @@ class UserService
         $user->email = $this->htmlFilter($request->input('email'));
         return $user->save();
     }
+
     protected function htmlFilter(string $html){
         return strip_tags($html,'<b><h1><small><p><em><span><strong><code><h2><h3><h4><h5><h6><del><i><s><hr><table><tr><td>');
     }

@@ -8,7 +8,7 @@
         </div>
         <div class="col-10 offset-1 row">
             <div class="col-4 text-center">
-                <p class="col-12 text-muted font-weight-bolder">{{ __('user.mater_show_user_title') }}</p>
+                <p class="col-12 text-muted font-weight-bolder">{{ __('user.master_show_user_title') }}</p>
                 <img class="rounded-circle"
                      src="https://anglehit.com/wp-content/uploads/2016/02/i_n_c_o_g_n_i_t_o__xlicon__by_blackoptics8-d85c0em.jpg"
                      alt="user" width="200" height="200">

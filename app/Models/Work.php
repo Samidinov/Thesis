@@ -10,14 +10,19 @@ class Work extends Model
 {
     use HasFactory;
 
-    public function categories()
+    public function categories ()
     {
         return $this->belongsToMany(Category::class, 'service_work', 'work_id', 'service_id');
     }
 
-    public function users()
+    public function users ()
     {
         return $this->belongsToMany('App\Models\User', 'service_work');
+    }
+     public function adsUser ()
+    {
+        return $this->belongsToMany('App\Models\User', 'ad_user', 'ad_id', 'user_id')
+            ->withPivot(['category']);
     }
 
     /**

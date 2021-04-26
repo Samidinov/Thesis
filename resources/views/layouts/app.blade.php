@@ -62,10 +62,19 @@
                                     {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" title="{{__('menu.my_ads')}}" href="{{route('work.userWorks',Auth::user()->id)}}">{{__('menu.my_ads')}}</a>
-                                    <a class="dropdown-item" title="{{__('menu.registration_as_master_hover')}}" href="{{route('master.show',Auth::user()->id)}}">{{__('menu.registration_as_master')}}</a>
-                                    <a class="dropdown-item" title="{{__('menu.setting_user_hover')}}" href="{{route('user.show',Auth::user()->id)}}">{{__('menu.setting_user')}}</a>
-                                    <a class="dropdown-item" title="{{__('menu.logout_user_hover')}}" href="{{ route('logout') }}"
+                                    <a class="dropdown-item text-primary fa fa-newspaper-o " title="{{__('menu.my_ads')}}" href="{{route('work.userWorks', Auth::user()->id)}}">
+                                        {{__('menu.my_ads')}}
+                                    </a>
+                                    <a class="dropdown-item text-primary fa fa-bookmark" title="{{__('menu.my_saved_list')}}" href="{{route('saved-ads.show', Auth::user()->id)}}">
+                                        {{__('menu.my_saved_list')}}
+                                    </a>
+                                    <a class="dropdown-item text-primary fa fa-star-half-full" title="{{__('menu.registration_as_master_hover')}}" href="{{route('master.show', Auth::user()->id)}}">
+                                           {{__('menu.registration_as_master')}}
+                                    </a>
+                                    <a class="dropdown-item text-primary fa fa-user-circle" title="{{__('menu.setting_user_hover')}}" href="{{route('user.show', Auth::user()->id)}}">
+                                           {{__('menu.setting_user')}}
+                                    </a>
+                                    <a class="dropdown-item fa fa-sign-out" title="{{__('menu.logout_user_hover')}}" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('menu.logout_user') }}

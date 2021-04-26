@@ -9,6 +9,7 @@ return [
     'setting_user_hover'=>'Өзүм жөнүндө маалыматты оңдоо',
     'add_ads'=>'Жарыя',
     'my_ads'=>'Жарыяларым',
+    'my_saved_list'=>'Сакталган',
     'registration_as_master'=>'Ишмердик',
     'registration_as_master_hover'=>'Ишмердик',
 ];

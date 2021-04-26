@@ -54,8 +54,8 @@ class MasterController extends Controller
      */
     public function store( Request $request )
     {
-        $this->masterService->store($request);
-
+        $master = $this->masterService->store($request);
+        return  redirect(route('master.edit' ,['master' =>$master] ));
     }
 
     /**
@@ -105,7 +105,7 @@ class MasterController extends Controller
     public function update(Request $request, $master_id)
     {
         $this->masterService->update( $request, $master_id );
-        return  redirect(route('master.edit' ,['master' => Master::find($master_id)] ));
+        return  redirect(route('master.show' ,['master_id' => $master_id] ));
     }
 
     /**
